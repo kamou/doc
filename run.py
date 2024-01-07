@@ -467,20 +467,6 @@ class ChatApp(object):
     def cmd_package_install(self, python_module):
         pass
 
-    def cmd_multiline(self, _):
-        lines = []
-        while True:
-            line = input()
-            if line == "":
-                break
-            lines.append(line)
-        run = self.assistant.request("\n".join(lines))
-        answer = self.__load_answer(run)
-        if not answer:
-            return
-
-        self.__parse_answer(answer)
-
     def cmd_citations(self, _):
         for citation, filename, index in self.citations.values():
             self.console.print(f"[bold blue][{index}] {filename}:")
